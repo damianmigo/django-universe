@@ -1,0 +1,53 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+body>.container {
+    padding: 60px 15px 0;
+}
+
+.footer {
+    bottom: 0;
+    height: 60px;
+    position: absolute;
+    width: 100%;
+}
+
+.footer>.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+code {
+    font-size: 80%;
+}
+
+.note-container .icon {
+    float: left;
+    width: 100px;
+    height: 110px;
+    position: relative;
+    margin-right: 30px;
+}
+
+.note-container .icon img {
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
