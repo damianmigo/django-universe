@@ -25,7 +25,7 @@ class Common(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = values.BooleanValue(False)
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = values.ListValue(environ_name='ALLOWED_HOSTS')
 
     # Application definition
     INSTALLED_APPS = [
@@ -36,7 +36,6 @@ class Common(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'django_extensions',
-        'debug_toolbar',
         'apps.notes',
     ]
 
@@ -123,11 +122,13 @@ class Development(Common):
     """
     DEBUG = True
 
-    ALLOWED_HOSTS = values.ListValue(['*'], environ_name='ALLOWED_HOSTS')
-
     INTERNAL_IPS = [
         '127.0.0.1'
     ]
+
+    INSTALLED_APPS = Common.INSTALLED_APPS + [
+        'debug_toolbar'
+    ];
 
     MIDDLEWARE = Common.MIDDLEWARE + [
         'debug_toolbar.middleware.DebugToolbarMiddleware'
