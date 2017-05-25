@@ -13,6 +13,7 @@ class Icon(models.Model):
     def __str__(self):
         return "%s - %s" % (self.id, self.name)
 
+
 class Note(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
@@ -24,8 +25,10 @@ class Note(models.Model):
     icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
+
         return "%s - %s" % (self.id, self.title)
-    
+
+
 @receiver(pre_save, sender=Note, dispatch_uid="pre_save_note")
 def pre_save_note(sender, instance, *args, **kwargs):
     instance.slug = slugify(instance.title)
