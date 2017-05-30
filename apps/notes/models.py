@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from markdown import markdown
+from markdown.extensions import fenced_code
 
 
 class Icon(models.Model):
@@ -32,4 +33,6 @@ class Note(models.Model):
 @receiver(pre_save, sender=Note, dispatch_uid="pre_save_note")
 def pre_save_note(sender, instance, *args, **kwargs):
     instance.slug = slugify(instance.title)
-    instance.content_html = markdown(instance.content_markdown, safe_mode='escape')
+    instance.content_html = markdown(instance.content_markdown,
+                                     extensions=[fenced_code.FencedCodeExtension()],
+                                     safe_mode='escape')
