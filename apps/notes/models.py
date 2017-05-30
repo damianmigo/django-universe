@@ -26,7 +26,6 @@ class Note(models.Model):
     icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
-
         return "%s - %s" % (self.id, self.title)
 
 
