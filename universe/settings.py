@@ -35,7 +35,9 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'django.contrib.sites',
         'django_extensions',
+        'djangoseo',
         'apps.notes',
     ]
 
@@ -115,6 +117,8 @@ class Common(Configuration):
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 
+    SITE_ID = 1
+
 
 class Development(Common):
     """
@@ -141,22 +145,23 @@ class Development(Common):
         "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
     }
 
+
 class Staging(Common):
     """
     The in-staging settings.
     """
     # Security
-    SESSION_COOKIE_SECURE = values.BooleanValue(True)
-    SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
-    SECURE_CONTENT_TYPE_NOSNIFF = values.BooleanValue(True)
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = values.BooleanValue(True)
-    SECURE_HSTS_SECONDS = values.IntegerValue(31536000)
-    SECURE_REDIRECT_EXEMPT = values.ListValue([])
-    SECURE_SSL_HOST = values.Value(None)
-    SECURE_SSL_REDIRECT = values.BooleanValue(True)
-    SECURE_PROXY_SSL_HEADER = values.TupleValue(
-        ('HTTP_X_FORWARDED_PROTO', 'https')
-    )
+    #SESSION_COOKIE_SECURE = values.BooleanValue(True)
+    #SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
+    #SECURE_CONTENT_TYPE_NOSNIFF = values.BooleanValue(True)
+    #SECURE_HSTS_INCLUDE_SUBDOMAINS = values.BooleanValue(True)
+    #SECURE_HSTS_SECONDS = values.IntegerValue(31536000)
+    #SECURE_REDIRECT_EXEMPT = values.ListValue([])
+    #SECURE_SSL_HOST = values.Value(None)
+    #SECURE_SSL_REDIRECT = values.BooleanValue(True)
+    #SECURE_PROXY_SSL_HEADER = values.TupleValue(
+    #    ('HTTP_X_FORWARDED_PROTO', 'https')
+    #)
 
 
 class Production(Staging):

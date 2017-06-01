@@ -51,3 +51,7 @@ code {
     right: 0;  
     margin: auto;
 }
+
+pre {
+    background-color: #F0F0F0;
+}
